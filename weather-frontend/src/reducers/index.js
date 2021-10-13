@@ -1,3 +1,10 @@
 import cityListReducer from './cityList';
+import cityWeatherReducer from './weather';
 
-export default cityListReducer;
+import { combineReducers } from "redux";
+
+
+export const rootReducer = combineReducers({
+    cityList : cityListReducer,
+    cityWeatherData : cityWeatherReducer
+});

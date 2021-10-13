@@ -7,6 +7,7 @@ class CityListCard extends Component {
     super(props);
     this.state = {
       cityinput: "",
+      activeCityIndex: 0 
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -49,10 +50,17 @@ class CityListCard extends Component {
   handleAddCity() {
     this.props.addCity({ city_name : this.state.cityinput }).then(()=>this.resetInputField())
   }
+  
   resetInputField(){
       this.setState({
           cityinput : ''
       })
+  }
+
+  handleCitySelect(index){
+    this.setState({
+      activeCityIndex : index
+    })
   }
 
   render() {
@@ -76,7 +84,11 @@ class CityListCard extends Component {
           {this.props.citylist &&
             this.props.citylist.map((cityObj, index) => {
               return (
-                <div key={index + 11} className="city__listitem">
+                <div 
+                key={index + 11} 
+                className={`city__listitem ${this.state.activeCityIndex == index ? 'item_active' : ''}`}
+                onClick={()=> this.handleCitySelect(index)}
+                >
                   {cityObj.cityName}
                 </div>
               );
@@ -89,7 +101,7 @@ class CityListCard extends Component {
 
 function mapStateToProps(state) {
   return {
-    citylist: state,
+    citylist: state.cityList,
   };
 }
 

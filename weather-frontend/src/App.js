@@ -7,7 +7,7 @@ import {
 import { createStore, applyMiddleware } from 'redux';
 
 import { Provider } from 'react-redux';
-import cityListReducer from './reducers';
+import { rootReducer } from './reducers';
 import thunk from 'redux-thunk';
 
 import AppHeader from './components/app-header';
@@ -15,7 +15,7 @@ import WeatherHome from './container/weather-home';
 
 
 const store = createStore(
-  cityListReducer,
+  rootReducer,
   applyMiddleware(thunk)
 );
 
