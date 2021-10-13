@@ -4,21 +4,32 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import { createStore, applyMiddleware } from 'redux';
+
+import { Provider } from 'react-redux';
+import cityListReducer from './reducers';
+import thunk from 'redux-thunk';
 
 import AppHeader from './components/app-header';
 import WeatherHome from './container/weather-home';
 
 
+const store = createStore(
+  cityListReducer,
+  applyMiddleware(thunk)
+);
+
 function App() {
   return (
     <div className="App">
-      <Router>
-      <AppHeader></AppHeader>
-        <Switch>
-          <Route path="/weather-home" component={WeatherHome}></Route>
-        </Switch>
-      </Router>
-
+      <Provider store={store}>
+        <Router>
+          <AppHeader></AppHeader>
+          <Switch>
+            <Route path="/weather-home" component={WeatherHome}></Route>
+          </Switch>
+        </Router>
+      </Provider>
     </div>
   );
 }

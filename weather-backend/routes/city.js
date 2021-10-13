@@ -26,7 +26,11 @@ router.post('/city', async(req,res)=>{
         createdAt: Date.now()
      }
     const cityName_inst = await cityName.create(cityObj)
-    res.status(200).send(cityName_inst);
+    const resObj = {
+        cityNameKey: cityName_inst.cityNameKey,
+        cityName: cityName_inst.cityName
+    }
+    res.status(200).send(resObj);
 });
 
 module.exports = router;
