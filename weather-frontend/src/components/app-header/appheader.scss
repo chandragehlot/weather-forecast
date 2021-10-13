@@ -1,0 +1,36 @@
+
+
+.app-header{
+    color: white;
+    .appHeader{
+        &__cont{
+            height: 60px;
+            background-color: $primary-color;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__logoCont{
+            padding-left:20px
+        }
+        &__logo_main{
+                font-size: 25px;
+                color: red;
+                text-decoration: underline;
+                font-style: italic;
+        }
+        &__logo_sub{
+            font-size: 10px;
+            color: wheat;
+        }
+
+        &__profileCont{
+            display: flex;
+        } 
+        &__help{
+            flex: 1;
+            padding: 0 20px;
+        }        
+    }
+}

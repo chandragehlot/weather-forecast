@@ -1,0 +1,42 @@
+.city{
+    &__cont{
+        background-color: #545759;
+        .item_active{
+            background-color: #439ff0;
+        }
+    }
+    &__additem{
+        display: flex;
+        height: 70px;
+        padding: 10px 10px 20px 10px;
+    }
+    &__input{
+        flex: 1;
+        max-height: 40px;
+        background: #545759;
+        border: 2px solid white;
+        border-right: 0;
+        color: white;
+        padding-left: 20px;
+    }
+    &__addbutton{
+        flex: 0.2;
+        background: #c14d0d;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        border: 2px solid white;
+    }
+    &__listitem{
+        height: 40px;
+        color: #fff;
+        background: #545759;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        font-weight: bold;
+    }
+}

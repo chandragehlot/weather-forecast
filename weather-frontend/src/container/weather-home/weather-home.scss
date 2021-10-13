@@ -1,0 +1,23 @@
+.weather-app{
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.left-card{
+    flex: 1;
+    padding:20px;
+}
+.right-card{
+   flex:0.4;
+   padding:20px;
+}
+
+$breakpoint-tablet: 768px;
+@media (max-width: $breakpoint-tablet) {
+    .weather-app{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+}
