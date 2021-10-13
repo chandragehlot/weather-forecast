@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 class CityListCard extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            cityinput: ''
+        }
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     componentWillMount() {
@@ -20,7 +24,7 @@ class CityListCard extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-
+        return true;   
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -35,6 +39,27 @@ class CityListCard extends Component {
 
     }
 
+    handleInputChange(e){
+        const inputVal = e.target.value;
+
+        console.log(inputVal);
+        this.setState({
+            cityinput : inputVal
+        });
+    }
+
+    handleKeyPress(e){
+        if(e.key === 'Enter'){
+            this.handleAddCity();
+        }
+        return false;
+        
+    }
+
+    handleAddCity(){
+        console.log('add city submitted');
+    }
+
     render() {
         return (
             <div className="city__cont">
@@ -43,11 +68,16 @@ class CityListCard extends Component {
                         <input 
                             className='input_comp' 
                             type="text" 
-                            value={'hello'} 
+                            value={this.state.cityinput}
+                            onChange={(e) => this.handleInputChange(e)}
+                            onKeyPress={(e) => this.handleKeyPress(e)}
                         />
-                        <div className="addbutton">
+                        <button
+                            className="addbutton"
+                            onClick={() => this.handleAddCity}
+                        >
                             ADD
-                        </div>
+                        </button>
                     </div>
 
                 </div>
