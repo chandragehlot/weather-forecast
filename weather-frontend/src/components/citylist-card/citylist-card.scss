@@ -5,29 +5,36 @@
             background-color: #439ff0;
         }
     }
-    &__additem{
+    &__input_sec{
         display: flex;
         height: 70px;
-        padding: 10px 10px 20px 10px;
-    }
-    &__input{
-        flex: 1;
-        max-height: 40px;
-        background: #545759;
-        border: 2px solid white;
-        border-right: 0;
-        color: white;
-        padding-left: 20px;
-    }
-    &__addbutton{
-        flex: 0.2;
-        background: #c14d0d;
-        text-align: center;
-        display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
-        border: 2px solid white;
+        padding:10px;
+    }
+    &__add_item{
+        display: flex;
+        width: 100%;
+        .input_comp{
+            flex: 1;
+            height: 40px;
+            background: #545759;
+            border: 1px solid white;
+            border-right: 0;
+            color: white;
+            padding-left: 20px;
+        }
+        .addbutton{
+            flex: 0.2;
+            background: #c14d0d;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: 1px solid #c14d0d;;
+            height: 42px;
+        }
     }
     &__listitem{
         height: 40px;

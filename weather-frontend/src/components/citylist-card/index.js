@@ -38,17 +38,20 @@ class CityListCard extends Component {
     render() {
         return (
             <div className="city__cont">
-                <div className="city__additem">
-                    <input 
-                        className='city__input' 
-                        type="text" 
-                        value={'hello'} 
-                    />
-                    <span className="city__addbutton">
-                        ADD
-                    </span>
+                <div className="city__input_sec">
+                    <div className="city__add_item">
+                        <input 
+                            className='input_comp' 
+                            type="text" 
+                            value={'hello'} 
+                        />
+                        <div className="addbutton">
+                            ADD
+                        </div>
+                    </div>
+
                 </div>
-                <div className="city__list">
+                <div className="city__list_sec">
                     <div className="city__listitem">
                         JAIPUR
                     </div>
