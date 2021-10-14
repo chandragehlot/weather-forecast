@@ -12,12 +12,10 @@ router.get("/citylist", async(req,res) => {
           updatedAt: 0
         }
     );
-    console.log("citylist", cityList);
     res.status(200).json(cityList);
 })
 
 router.post('/city', async(req,res)=>{
-    console.log('request receieved', req.body);
     const { city_name } = req.body;
 
     const cityObj = {

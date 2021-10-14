@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchCityList, addNewCity } from "../../action/citylist.action";
+import { getWeatherByCity } from "../../action/weather.action";
+
 
 class CityListCard extends Component {
   constructor(props) {
@@ -13,23 +15,13 @@ class CityListCard extends Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  componentWillMount() {}
 
   componentDidMount() {
-    this.props.fetchCityList();
+    this.props.fetchCityList().then(()=>{ 
+      const defaultCity = (this.props.citylist.length)?this.props.citylist[0].cityNameKey : '';
+      this.props.getWeatherByCity(defaultCity)
+    })
   }
-
-  componentWillReceiveProps(nextProps) {}
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
-  }
-
-  componentWillUpdate(nextProps, nextState) {}
-
-  componentDidUpdate(prevProps, prevState) {}
-
-  componentWillUnmount() {}
 
   handleInputChange(e) {
     const inputVal = e.target.value;
@@ -57,10 +49,13 @@ class CityListCard extends Component {
       })
   }
 
-  handleCitySelect(index){
+  handleCitySelect(index, cityNameKey){
     this.setState({
       activeCityIndex : index
+    },()=>{
+      this.props.getWeatherByCity(cityNameKey)
     })
+
   }
 
   render() {
@@ -87,7 +82,7 @@ class CityListCard extends Component {
                 <div 
                 key={index + 11} 
                 className={`city__listitem ${this.state.activeCityIndex == index ? 'item_active' : ''}`}
-                onClick={()=> this.handleCitySelect(index)}
+                onClick={()=> this.handleCitySelect(index,cityObj.cityNameKey)}
                 >
                   {cityObj.cityName}
                 </div>
@@ -108,7 +103,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchCityList: () => dispatch(fetchCityList()),
-    addCity: (cityObj) => dispatch(addNewCity(cityObj))
+    addCity: (cityObj) => dispatch(addNewCity(cityObj)),
+    getWeatherByCity: (cityName) => dispatch(getWeatherByCity(cityName))
   };
 }
 
