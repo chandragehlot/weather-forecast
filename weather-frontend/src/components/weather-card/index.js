@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import config from '../../config';
+import { getWeatherByCity } from "../../action/weather.action";
 
 class WeatherCard extends Component {
     constructor(props) {
@@ -20,12 +21,16 @@ class WeatherCard extends Component {
 
     componentDidUpdate(prevProps) {
         if(prevProps !== this.props){
-            const { weatherDetails, apiError, apiErrMsg } = this.props;
-            this.setState({
-                weatherDetails : {...weatherDetails},
-                error: apiError,
-                errMsg: apiErrMsg
-            })
+            if(prevProps.active_cityname !== this.props.active_cityname){
+                this.props.getWeatherByCity(this.props.active_cityname);   
+            } else {
+                const { weatherDetails, apiError, apiErrMsg } = this.props;
+                this.setState({
+                    weatherDetails : {...weatherDetails},
+                    error: apiError,
+                    errMsg: apiErrMsg
+                })                
+            }
         }
     }
 
@@ -45,6 +50,9 @@ class WeatherCard extends Component {
             <div> { this.state.errMsg }</div>
             :
             <div className="card__cont">
+                { (this.props.citylistLength == 0) ?
+                    <div className="vh-center"> { config.CITYLIST_EMPTY_ERR }  </div> :
+                <Fragment>
                 <div className="card__leftsec"> 
                     <div className="card__row1">
                         <div className="card__main">
@@ -95,6 +103,9 @@ class WeatherCard extends Component {
                         </div>                        
                     </div>
                 </div>
+                </Fragment>                    
+                }
+
             </div>
         );
     }
@@ -102,11 +113,20 @@ class WeatherCard extends Component {
 
 function mapStateToProps(state) {
     const { weatherdata, error, errormsg } = state.cityWeather;
+    const { active_cityname, citylist} = state.cityList;
     return {
         weatherDetails : weatherdata,
         apiError : error,
-        apiErrMsg : errormsg
+        apiErrMsg : errormsg,
+        active_cityname,
+        citylistLength : citylist.length
     };
 }
 
-export default connect(mapStateToProps)(WeatherCard);
+function mapDispatchToProps(dispatch) {
+    return {
+      getWeatherByCity: (cityname) => dispatch(getWeatherByCity(cityname))
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherCard);

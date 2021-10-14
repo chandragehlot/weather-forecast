@@ -9,6 +9,13 @@ const fetchCityList = () => {
         return axios.get(get_citylist_url)
         .then(res => dispatch(
                 { type: 'FETCH_CITYLIST_SUCC', data: res.data.resData }))
+            .then((res)=>{ 
+                if(res.data.length > 0){
+                    const defaultCity = res.data[0].cityname;
+                    dispatch(setActiveCityName(defaultCity));                    
+                }
+
+            })
             .catch(err => console.log('error in fetch city list', err))
     }
 }
@@ -24,7 +31,12 @@ const addNewCity = (cityObj) => {
     }
 }
 
+const setActiveCityName = (active_cityname) => {
+    return { type: 'SET_ACTIVE_CITY', data: { active_cityname : active_cityname } }
+}
+
 export {
     addNewCity,
-    fetchCityList
+    fetchCityList,
+    setActiveCityName
 };

@@ -27,7 +27,7 @@ async function handleAddNewCity(req, res) {
       const cityObj = createCityObj(cityname);
 
       const city_Inst = await City.findOne({ cityname: cityname });
-      console.log("cityDoc_Instance", city_Inst);
+      
       if (city_Inst != null) {
         ValidationErrorResponse(res, "City name already exists");
       } else {

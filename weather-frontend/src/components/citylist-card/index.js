@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCityList, addNewCity } from "../../action/citylist.action";
-import { getWeatherByCity } from "../../action/weather.action";
+import { fetchCityList, addNewCity, setActiveCityName } from "../../action/citylist.action";
 
 
 class CityListCard extends Component {
@@ -11,28 +10,12 @@ class CityListCard extends Component {
       cityname: "",
       activeCityIndex: 0 
     };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
 
   componentDidMount() {
-    this.props.fetchCityList().then(()=>{
-      console.log('after fetch city list api call', this.props)
-      if(this.props.citylist.length > 0){
-        const defaultCity = this.props.citylist[0].cityname;
-        this.props.getWeatherByCity(defaultCity)
-      }
-      // TODO
-      // show error message on screen that city list empty
-    })
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('citylist card prevProps', prevProps);
-    console.log('citylist card prevState', prevState);
-    console.log('citylist card this props', this.props)
-  }
+    this.props.fetchCityList()
+  }  
 
   handleInputChange(e) {
     const inputVal = e.target.value;
@@ -49,7 +32,13 @@ class CityListCard extends Component {
   }
 
   handleAddCity() {
-    this.props.addCity({ cityname : this.state.cityname }).then(()=>this.resetInputField())
+    const cityname = this.state.cityname;
+    this.props.addCity({ cityname : cityname }).then(()=>{
+      if(this.props.citylist.length == 1){
+        this.props.setActiveCityName(cityname)
+      }
+      this.resetInputField();
+    })
   }
   
   resetInputField(){
@@ -62,7 +51,7 @@ class CityListCard extends Component {
     this.setState({
       activeCityIndex : index
     },()=>{
-      this.props.getWeatherByCity(cityname)
+      this.props.setActiveCityName(cityname)
     })
 
   }
@@ -113,7 +102,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchCityList: () => dispatch(fetchCityList()),
     addCity: (cityObj) => dispatch(addNewCity(cityObj)),
-    getWeatherByCity: (cityname) => dispatch(getWeatherByCity(cityname))
+    setActiveCityName : (cityname) => dispatch(setActiveCityName(cityname)),
   };
 }
 
