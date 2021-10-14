@@ -31,7 +31,7 @@ Use Documentation : https://docs.mongodb.com/guides/server/install/
 4) add new cities and see the live weather details for cities.
 
 # Things to Improve
-Error handling of API's to show on UI.
-Unit test cased for both frontend and backend
-ErrorBoundiris for to prevent fatal collapse of frontend app
-FrontEnd design for small devices.
+1. Error handling of API's to show on UI.
+2. Unit test cased for both frontend and backend
+3. ErrorBoundiris for to prevent fatal collapse of frontend app
+4. FrontEnd design for small devices.
