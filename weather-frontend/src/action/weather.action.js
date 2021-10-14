@@ -1,10 +1,13 @@
 import axios from 'axios';
+import config from '../config';
 
-const weather_url = 'https://api.openweathermap.org/data/2.5/weather';
-const appid = '858f15fed9292cbe25c341a754c55e45';
+const weather_url = config.WEATHER_API_URL 
+const appid = config.WEATHER_API_KEY
+const error_message = config.WEATHER_API_ERRRMSG
 
 const getWeatherByCity = (cityName) => {
     return (dispatch) => {
+        dispatch({ type: 'GET_CITY_WEATHER_STARTED'});
         return axios.get(weather_url,{
             params : {
                 q : cityName,
@@ -15,7 +18,7 @@ const getWeatherByCity = (cityName) => {
         .then(res => dispatch(
                 { type: 'GET_CITY_WEATHER_SUCC', data: res.data }))
             .catch(err => dispatch(
-                { type: 'GET_CITY_WEATHER_FAIL', msg: "Unable to fetch data" }))
+                { type: 'GET_CITY_WEATHER_FAIL', msg: error_message }))
     }
 }
 

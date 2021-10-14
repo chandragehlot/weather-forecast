@@ -12,21 +12,25 @@ class WeatherCard extends Component {
                 wind : {}, 
                 visibility : 0, 
                 clouds : 0
-            }
+            },
+            error: false,
+            errMsg : ''
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if(prevProps !== this.props){
             this.setState({
-                weatherDetails : {...this.props.weatherByCity}
+                weatherDetails : {...this.props.weatherDetails},
+                error: this.props.apiError,
+                errMsg: this.props.apiErrMsg
             })
         }
     }
 
     getIconUrl(){
-        const { weather } = this.state.weatherDetails;
-        if(weather.length){
+        const { weather } = this.state.weatherDetails || [];
+        if(weather.length > 0){
             const icon = weather[0].icon;
             return `https://openweathermap.org/img/wn/${icon}@2x.png`;
         }
@@ -36,6 +40,9 @@ class WeatherCard extends Component {
     render() {
         const { main, weather, wind, visibility, clouds } = this.state.weatherDetails;
         return (
+            (this.state.error) ?
+            <div> { this.state.errMsg }</div>
+            :
             <div className="card__cont">
                 <div className="card__leftsec"> 
                     <div className="card__row1">
@@ -93,8 +100,11 @@ class WeatherCard extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log('me koi aisa geet gau', state);
     return {
-        weatherByCity : state.cityWeatherData
+        weatherDetails : state.cityWeather.weatherdata,
+        apiError : state.cityWeather.error,
+        apiErrMsg : state.cityWeather.errormsg
     };
 }
 

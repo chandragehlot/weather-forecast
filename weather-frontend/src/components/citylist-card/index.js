@@ -17,7 +17,7 @@ class CityListCard extends Component {
 
 
   componentDidMount() {
-    this.props.fetchCityList().then(()=>{ 
+    this.props.fetchCityList().then(()=>{
       const defaultCity = (this.props.citylist.length)?this.props.citylist[0].cityNameKey : '';
       this.props.getWeatherByCity(defaultCity)
     })
@@ -94,7 +94,7 @@ class CityListCard extends Component {
 
 function mapStateToProps(state) {
   return {
-    citylist: state.cityList,
+    citylist: state.cityList.citylist,
   };
 }
 
