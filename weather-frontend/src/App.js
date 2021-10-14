@@ -12,6 +12,8 @@ import thunk from 'redux-thunk';
 
 import AppHeader from './components/app-header';
 import WeatherHome from './container/weather-home';
+import HelpPage from './container/help';
+
 
 
 const store = createStore(
@@ -27,6 +29,7 @@ function App() {
           <AppHeader></AppHeader>
           <Switch>
             <Route path="/weather-home" component={WeatherHome}></Route>
+            <Route path="/help" component={HelpPage} ></Route>
           </Switch>
         </Router>
       </Provider>

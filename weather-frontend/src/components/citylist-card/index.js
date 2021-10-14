@@ -79,7 +79,7 @@ class CityListCard extends Component {
               return (
                 <div 
                 key={index + 11} 
-                className={`city__listitem ${this.state.activeCityIndex == index ? 'item_active' : ''}`}
+                className={`city__listitem ${this.state.activeCityIndex === index ? 'item_active' : ''}`}
                 onClick={()=> this.handleCitySelect(index,cityObj.cityNameKey)}
                 >
                   {cityObj.cityName}

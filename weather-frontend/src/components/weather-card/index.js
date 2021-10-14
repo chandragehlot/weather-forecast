@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import config from '../../config';
 
 class WeatherCard extends Component {
     constructor(props) {
@@ -20,10 +20,11 @@ class WeatherCard extends Component {
 
     componentDidUpdate(prevProps) {
         if(prevProps !== this.props){
+            const { weatherDetails, apiError, apiErrMsg } = this.props;
             this.setState({
-                weatherDetails : {...this.props.weatherDetails},
-                error: this.props.apiError,
-                errMsg: this.props.apiErrMsg
+                weatherDetails : {...weatherDetails},
+                error: apiError,
+                errMsg: apiErrMsg
             })
         }
     }
@@ -32,7 +33,7 @@ class WeatherCard extends Component {
         const { weather } = this.state.weatherDetails || [];
         if(weather.length > 0){
             const icon = weather[0].icon;
-            return `https://openweathermap.org/img/wn/${icon}@2x.png`;
+            return `${config.WEATHER_ICON_URL}/${icon}@2x.png`;
         }
         return '';
     }
@@ -55,7 +56,7 @@ class WeatherCard extends Component {
                     </div>
                     <div className="card__row2">
                         <div className="card__imgcont">
-                            <img src={this.getIconUrl()} />
+                            <img src={this.getIconUrl()} alt="Weather"/>
                         </div>
                         <div className="card__tempcont"> 
                             <div className="card__temp">
@@ -100,11 +101,11 @@ class WeatherCard extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('me koi aisa geet gau', state);
+    const { weatherdata, error, errormsg } = state.cityWeather;
     return {
-        weatherDetails : state.cityWeather.weatherdata,
-        apiError : state.cityWeather.error,
-        apiErrMsg : state.cityWeather.errormsg
+        weatherDetails : weatherdata,
+        apiError : error,
+        apiErrMsg : errormsg
     };
 }
 
