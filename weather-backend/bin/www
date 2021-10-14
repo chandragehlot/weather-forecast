@@ -8,6 +8,7 @@ app.set('port', port);
 var server = http.createServer(app);
 
 server.listen(port);
+
 server.on('listening', ()=>{
     const address = server.address();
     dbConnect.connect();

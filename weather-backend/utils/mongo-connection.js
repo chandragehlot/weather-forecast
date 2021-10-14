@@ -18,6 +18,7 @@ class dbConnectSingleton {
             console.log('mongo db conencted successfully');
         }).catch((err)=>{
             console.log('mongo db connection error:', err);
+            process.exit(1);
         });
     }
 }
