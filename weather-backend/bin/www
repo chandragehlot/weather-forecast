@@ -3,12 +3,11 @@ var http = require('http');
 const dbConnect = require('../utils/mongo-connection');
 
 var port = process.env.PORT;
-app.set('port', port);
 
+app.set('port', port);
 var server = http.createServer(app);
 
 server.listen(port);
-
 server.on('listening', ()=>{
     const address = server.address();
     dbConnect.connect();

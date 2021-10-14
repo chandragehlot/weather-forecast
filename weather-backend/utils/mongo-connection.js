@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const database_url = process.env.MONGODB_URL;
 
-// SingleTon class to connect MongoDb database.
+/* 
+* SingleTon class to connect MongoDb database.
+*/
 
 class dbConnectSingleton {
     constructor(url){
