@@ -36,7 +36,7 @@ class WeatherCard extends Component {
     render() {
         const { main, weather, wind, visibility, clouds } = this.state.weatherDetails;
         return (
-            <div className="card_cont">
+            <div className="card__cont">
                 <div className="card__leftsec"> 
                     <div className="card__row1">
                         <div className="card__main">
@@ -65,23 +65,23 @@ class WeatherCard extends Component {
 
                 <div className="card__rightsec">
                     <div className="card__listcont">
-                        <div className="card_listitem">
+                        <div className="card__listitem">
                             <span>Wind Gusts</span>
                             <span>{ wind && wind.speed }</span>
                         </div>
-                        <div className="card_listitem">
+                        <div className="card__listitem">
                             <span>Pressure</span>
                             <span>{ main && main.pressure } mb</span>
                         </div>
-                        <div className="card_listitem">
+                        <div className="card__listitem">
                             <span>Humidity</span>
                             <span>{ main && main.humidity } %</span>
                         </div>
-                        <div className="card_listitem">
+                        <div className="card__listitem">
                             <span>Visibility</span>
                             <span>{visibility && (Math.floor(parseInt(visibility)/1000))} km</span>
                         </div>
-                        <div className="card_listitem">
+                        <div className="card__listitem">
                             <span>clouds</span>
                             <span>{ clouds && clouds.all } %</span>
                         </div>                        

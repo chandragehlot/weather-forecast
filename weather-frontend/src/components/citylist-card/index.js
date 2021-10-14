@@ -25,11 +25,9 @@ class CityListCard extends Component {
 
   handleInputChange(e) {
     const inputVal = e.target.value;
-    if(inputVal){
         this.setState({
             cityinput: inputVal,
         });
-    }
   }
 
   handleKeyPress(e) {
