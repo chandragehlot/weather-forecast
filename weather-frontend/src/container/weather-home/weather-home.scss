@@ -13,11 +13,34 @@
    padding:20px;
 }
 
-$breakpoint-tablet: 768px;
-@media (max-width: $breakpoint-tablet) {
+
+
+@media only screen and (max-width: $breakpoint-lg) and (min-width : $breakpoint-md) {
     .weather-app{
-        display: flex;
+        width: 100%;
+        flex-direction: row;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-md) and (min-width : $breakpoint-sm) {
+    .weather-app{
         width: 100%;
         flex-direction: column;
+    }
+    .right-card{
+        padding: 0 20px 20px 20px;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .weather-app{
+        flex-direction: column;
+        width: 100%;
+    }
+    .left-card{
+        padding:10px;
+    }
+    .right-card{
+        padding: 0 10px 10px 10px;
     }
 }

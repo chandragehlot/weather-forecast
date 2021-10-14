@@ -2,17 +2,19 @@ $primary-color : #1f1f1f;
 $lightgray : #f2f1ed; 
 $gray : #A9A9A9;
 
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+
 html, body{
     height: 100%;
     margin: 0;
 }
 .App, #root,.pagecont{
-    height: 100%;
-}
-
-.pagecont{
+    min-height: 100%;
     background-color: $lightgray;
 }
+
 .d-flex{
     display: flex;
 }

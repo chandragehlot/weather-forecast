@@ -43,8 +43,8 @@ class AppHeader extends Component {
                 <div className="appHeader__cont">
                     <div className="appHeader__logoCont">
                         <div className="appHeader__logo">
-                            <div className="appHeader__logo_main">City</div>
-                            <div className="appHeader__logo_sub">Weather</div>
+                            <span className="appHeader__logo_main">City</span>
+                            <span className="appHeader__logo_sub">Weather Forcast</span>
                         </div>
                     </div>
                     <div className="appHeader__profileCont">
