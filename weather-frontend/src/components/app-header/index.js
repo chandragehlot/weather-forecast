@@ -1,40 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
-
 
 class AppHeader extends Component {
     constructor(props) {
         super(props);
-
-    }
-
-    componentWillMount() {
-
-    }
-
-    componentDidMount() {
-
-    }
-
-    componentWillReceiveProps(nextProps) {
-
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return true;
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-
-    }
-
-    componentWillUnmount() {
-
     }
 
     render() {
@@ -44,7 +12,7 @@ class AppHeader extends Component {
                     <div className="appHeader__logoCont">
                         <div className="appHeader__logo">
                             <span className="appHeader__logo_main">City</span>
-                            <span className="appHeader__logo_sub">Weather Forcast</span>
+                            <span className="appHeader__logo_sub">Weather forecast</span>
                         </div>
                     </div>
                     <div className="appHeader__profileCont">
