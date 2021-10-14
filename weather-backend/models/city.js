@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CitySchema  = new Schema({
-    cityNameKey : { type: String },
-    cityName: { type: String },
+    cityname : { type: String },
+    cityname_label: { type: String },
     createdAt: Date
 }, {
     timestamps : true

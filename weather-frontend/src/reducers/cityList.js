@@ -1,5 +1,5 @@
 const initialCityList = {
-citylist : []
+    citylist : []
 }
 
 const cityListReducer = (state = initialCityList, action) => {

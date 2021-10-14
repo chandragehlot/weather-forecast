@@ -1,6 +1,6 @@
 const express = require('express');
 const cityController = require('../controller/CityController');
-const validateCity = require('../middlewares/city.validation');
+const validateCity = require('../middlewares/CityValidation');
 
 
 const router = express.Router();

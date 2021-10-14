@@ -8,7 +8,7 @@ class CityListCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cityinput: "",
+      cityname: "",
       activeCityIndex: 0 
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -18,15 +18,26 @@ class CityListCard extends Component {
 
   componentDidMount() {
     this.props.fetchCityList().then(()=>{
-      const defaultCity = (this.props.citylist.length)?this.props.citylist[0].cityNameKey : '';
-      this.props.getWeatherByCity(defaultCity)
+      console.log('after fetch city list api call', this.props)
+      if(this.props.citylist.length > 0){
+        const defaultCity = this.props.citylist[0].cityname;
+        this.props.getWeatherByCity(defaultCity)
+      }
+      // TODO
+      // show error message on screen that city list empty
     })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('citylist card prevProps', prevProps);
+    console.log('citylist card prevState', prevState);
+    console.log('citylist card this props', this.props)
   }
 
   handleInputChange(e) {
     const inputVal = e.target.value;
         this.setState({
-            cityinput: inputVal,
+            cityname: inputVal,
         });
   }
 
@@ -38,20 +49,20 @@ class CityListCard extends Component {
   }
 
   handleAddCity() {
-    this.props.addCity({ city_name : this.state.cityinput }).then(()=>this.resetInputField())
+    this.props.addCity({ cityname : this.state.cityname }).then(()=>this.resetInputField())
   }
   
   resetInputField(){
       this.setState({
-          cityinput : ''
+          cityname : ''
       })
   }
 
-  handleCitySelect(index, cityNameKey){
+  handleCitySelect(index, cityname){
     this.setState({
       activeCityIndex : index
     },()=>{
-      this.props.getWeatherByCity(cityNameKey)
+      this.props.getWeatherByCity(cityname)
     })
 
   }
@@ -64,7 +75,7 @@ class CityListCard extends Component {
             <input
               className="input_comp"
               type="text"
-              value={this.state.cityinput}
+              value={this.state.cityname}
               onChange={(e) => this.handleInputChange(e)}
               onKeyPress={(e) => this.handleKeyPress(e)}
             />
@@ -80,9 +91,9 @@ class CityListCard extends Component {
                 <div 
                 key={index + 11} 
                 className={`city__listitem ${this.state.activeCityIndex === index ? 'item_active' : ''}`}
-                onClick={()=> this.handleCitySelect(index,cityObj.cityNameKey)}
+                onClick={()=> this.handleCitySelect(index,cityObj.cityname)}
                 >
-                  {cityObj.cityName}
+                  {cityObj.cityname_label}
                 </div>
               );
             })}
@@ -102,7 +113,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchCityList: () => dispatch(fetchCityList()),
     addCity: (cityObj) => dispatch(addNewCity(cityObj)),
-    getWeatherByCity: (cityName) => dispatch(getWeatherByCity(cityName))
+    getWeatherByCity: (cityname) => dispatch(getWeatherByCity(cityname))
   };
 }
 

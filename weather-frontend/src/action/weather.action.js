@@ -5,12 +5,12 @@ const weather_url = config.WEATHER_API_URL
 const appid = config.WEATHER_API_KEY
 const error_message = config.WEATHER_API_ERRRMSG
 
-const getWeatherByCity = (cityName) => {
+const getWeatherByCity = (cityname) => {
     return (dispatch) => {
         dispatch({ type: 'GET_CITY_WEATHER_STARTED'});
-        return axios.get(weather_url,{
+        return axios.get(weather_url, {
             params : {
-                q : cityName,
+                q : cityname,
                 appid : appid,
                 units: 'metric'
             }

@@ -23,16 +23,16 @@ async function handleAddNewCity(req, res) {
     if (!errors.isEmpty()) {
       ValidationErrorResponse(res, "", errors);
     } else {
-      const { city_name } = req.body;
-      const cityObj = createCityObj(city_name);
+      const { cityname } = req.body;
+      const cityObj = createCityObj(cityname);
 
-      const city_Inst = await City.findOne({ cityNameKey: city_name });
+      const city_Inst = await City.findOne({ cityname: cityname });
       console.log("cityDoc_Instance", city_Inst);
       if (city_Inst != null) {
         ValidationErrorResponse(res, "City name already exists");
       } else {
-        const { cityNameKey, cityName } = await City.create(cityObj);
-        SuccessResponse(res, { cityNameKey, cityName });
+        const { cityname, cityname_label } = await City.create(cityObj);
+        SuccessResponse(res, { cityname, cityname_label });
       }
     }
   } catch (error) {

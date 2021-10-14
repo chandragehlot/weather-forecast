@@ -1,7 +1,7 @@
 const createCityObj = (city_name) => {
     return {
-        cityNameKey : city_name.toLowerCase(),
-        cityName: city_name.toUpperCase(),
+        cityname : city_name.toLowerCase(),
+        cityname_label: city_name.toUpperCase(),
         createdAt: Date.now()
      }
 }
