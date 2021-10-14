@@ -1,3 +1,3 @@
 module.exports = {
-    CityName : require('./cityName'),
+    City : require('./city'),
 }

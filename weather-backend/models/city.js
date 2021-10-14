@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var CityNameSchema  = new Schema({
+var CitySchema  = new Schema({
     cityNameKey : { type: String },
     cityName: { type: String },
     createdAt: Date
@@ -10,6 +10,6 @@ var CityNameSchema  = new Schema({
     timestamps : true
 });
 
-const CityName = mongoose.model("CityName", CityNameSchema);
+const City = mongoose.model("City", CitySchema);
 
-module.exports = CityName;
+module.exports = City;

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const database_url = 'mongodb://127.0.0.1:27017/vivahdotcom';
+const database_url = process.env.MONGODB_URL;
 
 // SingleTon class to connect MongoDb database.
 
@@ -15,9 +15,9 @@ class dbConnectSingleton {
             useUnifiedTopology: true            
         }).then((db)=>{
             this.instance = db;
-            console.log('conencted successfully');
+            console.log('mongo db conencted successfully');
         }).catch((err)=>{
-            console.log('connection error:', err);
+            console.log('mongo db connection error:', err);
         });
     }
 }

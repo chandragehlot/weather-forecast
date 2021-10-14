@@ -1,11 +1,11 @@
 const express = require('express');
-const cityName = require('../models/cityName');
+const City = require('../models/city');
 
 const router = express.Router();
 
 
 router.get("/citylist", async(req,res) => {
-    const cityList = await cityName.find({}, 
+    const cityList = await City.find({}, 
         { _id: 0,
           __v : 0,
           createdAt: 0,
@@ -23,7 +23,7 @@ router.post('/city', async(req,res)=>{
         cityName: city_name.toUpperCase(),
         createdAt: Date.now()
      }
-    const cityName_inst = await cityName.create(cityObj)
+    const cityName_inst = await City.create(cityObj)
     const resObj = {
         cityNameKey: cityName_inst.cityNameKey,
         cityName: cityName_inst.cityName
