@@ -15,8 +15,8 @@ Application has two parts
 >If city Name exist with OpenWeatherMap API, then it will show the weather details, else throw error.
 
 # Tech
-**FrontEnd** : ReactJS, ReduxJS, Redux Thunk (redux middleware), AXIOS, SCSS, Create-react-app CLI
-**BackEnd** : NodeJS, ExpressJS, MongoDB, Mongoose
+-**FrontEnd** : ReactJS, ReduxJS, Redux Thunk (redux middleware), AXIOS, SCSS, Create-react-app CLI
+-**BackEnd** : NodeJS, ExpressJS, MongoDB, Mongoose
 
 # Installation
 **Pre-requisite :** 
@@ -48,5 +48,12 @@ Backend Server will start on port 8000 and expose endpoints
 2. Error handling on frontend side.
 3. Error Boundaries for to prevent fatal collapse of frontend app
 4. Update FrontEnd design for small devices.
+
+# Screens
+Desktop
+![Alt text](/docs/weather-forecast-desktop.png "Desktop UI View")
+
+Mobile
+![Alt text](/docs/weather-forecast-mobile.png "Mobile UI View")
 
   [OpenWeatherMap]: https://openweathermap.org/
