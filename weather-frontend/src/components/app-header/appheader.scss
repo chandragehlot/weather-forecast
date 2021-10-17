@@ -1,5 +1,5 @@
 .app-header{
-    color: white;
+    color: $white;
     .appHeader{
         &__cont{
             height: 60px;
@@ -10,7 +10,7 @@
             justify-content: space-between;
             a{
                 text-decoration: none;
-                color: #FFF;
+                color: $white;
             }
         }
         &__logoCont{
@@ -24,7 +24,7 @@
         }
         &__logo_sub{
             font-size: 16px;
-            color: wheat;
+            color: $white;
         }
 
         &__profileCont{
@@ -35,7 +35,7 @@
             padding: 0 20px;
             a{
                 text-decoration: none;
-                color: #FFF;
+                color: $white;
             }
         }        
     }

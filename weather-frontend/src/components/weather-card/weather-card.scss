@@ -60,7 +60,10 @@
     &__sub {
       font-size: 16px;
     }
-
+    &__listcont{
+      margin:0;
+      padding:0;
+    }
     &__listitem {
       display: flex;
       align-items: center;

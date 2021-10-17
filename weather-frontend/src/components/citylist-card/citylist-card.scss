@@ -1,9 +1,6 @@
 .city{
     &__cont{
-        background-color: #545759;
-        .item_active{
-            background-color: #439ff0;
-        }
+        background-color: $list-bg;
     }
     &__input_sec{
         display: flex;
@@ -18,29 +15,33 @@
         .input_comp{
             flex: 1;
             height: 40px;
-            background: #545759;
-            border: 1px solid white;
+            background: $list-bg;
+            border: 1px solid $white;
             border-right: 0;
-            color: white;
+            color: $white;
             padding-left: 20px;
             font-size: 16px;
         }
         .addbutton{
             flex: 0.2;
-            background: #c14d0d;
+            background: $addbtn-bg;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            border: 1px solid #c14d0d;;
+            color: $white;
+            border: 1px solid $addbtn-bg;
             height: 42px;
         }
     }
+    &__list_sec{
+        margin:0;
+        padding:0
+    }
     &__listitem{
         height: 40px;
-        color: #fff;
-        background: #545759;
+        color: $white;
+        background: $list-bg;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -48,5 +49,8 @@
         font-weight: bold;
         box-sizing: border-box;
         cursor: pointer;
+        &.item_active{
+            background-color: $list-bg-active;
+        }
     }
 }

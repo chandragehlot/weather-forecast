@@ -48,28 +48,28 @@ const WeatherCard = () => {
         </div>
 
         <div className="card__rightsec">
-            <div className="card__listcont">
-                <div className="card__listitem">
+            <ul className="card__listcont">
+                <li className="card__listitem">
                     <span>Wind Gusts</span>
                     <span>{ wind && wind.speed }</span>
-                </div>
-                <div className="card__listitem">
+                </li>
+                <li className="card__listitem">
                     <span>Pressure</span>
                     <span>{ main && main.pressure } mb</span>
-                </div>
-                <div className="card__listitem">
+                </li>
+                <li className="card__listitem">
                     <span>Humidity</span>
                     <span>{ main && main.humidity } %</span>
-                </div>
-                <div className="card__listitem">
+                </li>
+                <li className="card__listitem">
                     <span>Visibility</span>
                     <span>{visibility && (Math.floor(parseInt(visibility)/1000))} km</span>
-                </div>
-                <div className="card__listitem">
+                </li>
+                <li className="card__listitem">
                     <span>clouds</span>
                     <span>{ clouds && clouds.all } %</span>
-                </div>                        
-            </div>
+                </li>                        
+            </ul>
         </div>
         </Fragment>
     </div>

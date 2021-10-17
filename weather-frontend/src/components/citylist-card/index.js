@@ -72,20 +72,20 @@ class CityListCard extends Component {
             </button>
           </div>
         </div>
-        <div className="city__list_sec">
+        <ul className="city__list_sec">
           {this.props.citylist &&
             this.props.citylist.map((cityObj, index) => {
               return (
-                <div
-                key={index + 11} 
-                className={`city__listitem ${this.state.activeCityIndex === index ? 'item_active' : ''}`}
-                onClick={()=> this.handleCitySelect(index,cityObj.cityname)}
+                <li
+                  key={index + 11} 
+                  className={`city__listitem ${this.state.activeCityIndex === index ? 'item_active' : ''}`}
+                  onClick={()=> this.handleCitySelect(index,cityObj.cityname)}
                 >
                   {cityObj.cityname_label}
-                </div>
+                </li>
               );
             })}
-        </div>
+        </ul>
       </div>
     );
   }
