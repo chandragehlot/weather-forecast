@@ -4,7 +4,7 @@ const cors = require('cors');
 const logger = require('morgan');
 require("dotenv").config();
 
-const cityApiRoute = require('./routes/city');
+const apiRoute = require('./routes/city');
 var app = express();
 
 //middlewares
@@ -18,7 +18,7 @@ app.get('/api/v1/health-check', (req, res) => {
   res.send('weather backend api working fine')
 })
 
-app.use("/api/v1", cityApiRoute);
+app.use("/api/v1", apiRoute);
 
 
 module.exports = app;

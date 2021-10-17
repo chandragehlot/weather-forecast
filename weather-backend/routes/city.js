@@ -1,5 +1,7 @@
 const express = require('express');
 const cityController = require('../controller/CityController');
+const weatherController = require('../controller/weatherController');
+
 const validateCity = require('../middlewares/CityValidation');
 
 
@@ -11,5 +13,7 @@ router.post('/city',
     validateCity,
     cityController.handleAddNewCity
 );
+
+router.get("/weather/:cityname", weatherController.getCityWeatherData)
 
 module.exports = router;
