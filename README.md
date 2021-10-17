@@ -1,45 +1,52 @@
-# About the APP
+# About the Weather forecast APP
+This project is for weather forecasting application, which is based on [OpenWeatherMap]. 
+It show the live weather details of selected cities. List of cities and provision to add new cities provided in the application.
 
-This project is for weather forecasting application. The application is fully responsive. It display list of cities with an option to add new city along with current Weather details of selected city. Different cities can be selected from city list and corresponding Weather details will render.
+Application has two parts
+1. Front-end to render web application
+2. Back-end to provide APIs for 
+    - List of cities added already
+    - Adding new city 
+    - Weatherdetails for selected city. Under the hood use OpenWeatherMap
 
+`Conditions for City Name:`
+>Only alphabates allowed to add new city name, any other charters it will throw error.
+>As of now displaying errors on UI is not implemented, so errors will be displayed on Console only.
+>If city Name exist with OpenWeatherMap API, then it will show the weather details, else throw error.
 
-# Parts of APP
+# Tech
+**FrontEnd** : ReactJS, ReduxJS, Redux Thunk (redux middleware), AXIOS, SCSS, Create-react-app CLI
+**BackEnd** : NodeJS, ExpressJS, MongoDB, Mongoose, OPEN 
 
-Application has two parts 
-    a) front-end to render web application
-    b) back-end to provide APIs for city list and add new city.
+# Installation
+**Pre-requisite :** 
+- MongoDB setup in local machine and up and running
+- Documentation : https://docs.mongodb.com/guides/server/install/
+- Node JS setup in local machine
 
-Front-end application use Open Weather API to show current weather details. 
-NOTE : (As per the currnet implementation the weather APIs getting called from browser, but it should be called via node js backend, so the API token will not expose in browser)
-
-
-# Technology Stack used
-
-1. FrontEnd : ReactJS, ReduxJS, Thunk(redux middleware), AXIOS, SCSS, Create-react-app CLI
-2. BackEnd : NodeJS, ExpressJS, MongoDB, Mongoose
-
-
-# Set up intructions
-
-Pre-requisite : 
-
-1. MongoDB setup in local machine and up and running
-Use Documentation : https://docs.mongodb.com/guides/server/install/
-2. Node JS setup in local machine
-
-Setup steps ; 
-
-1. Go to weather-backend folder and change file .env.default to .env file. Or can create a new .env and paste content of .env.default
-2. Open weather-backend and weather-frontend in seperate terminals
-3. yarn install for both weather-backend and weather-frontend
-4.  Run below commands for development
-    a) weather-backend : yarn run dev 
-    b) weather-frontend : yarn run start
-5. add new cities and see the live weather details for cities.
+**FrontEnd**
+Open weather-frontend in terminal
+```sh
+yarn install
+yarn run start
+```
+Front will start on port 3000. Open browser and run url 'http://localhost:3000'
+**FrontEnd**
+Open weather-backend in terminal
+```sh
+yarn install
+yarn run dev
+```
+Backend Server will start on port 8000 and expose endpoints
+- Fetch City List 'http://localhost:8000/api/v1/city' - GET
+- Add New City 'http://localhost:8000/api/v1/city' - POST
+- Weather Details 'http://localhost:8000/api/v1/weather/:cityname' - GET
+> Note : If .env file does not exist weather-backend folder, then change file .env.default to .env file. Or can create a new .env and paste content of .env.default
 
 # Things to Improve
 1. Unit test cases for both frontend and backend
 2. Error handling on frontend side.
 3. Error Boundaries for to prevent fatal collapse of frontend app
 4. Update FrontEnd design for small devices.
-5. Use weather API's vio node js backend layer, so that API token not expose to use in brwoser.
+
+  [OpenWeatherMap]: https://openweathermap.org/
