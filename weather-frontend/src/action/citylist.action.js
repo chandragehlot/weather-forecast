@@ -1,11 +1,10 @@
 import axios from "axios";
 import config from "../config";
 
-const get_citylist_url = `${config.CITY_API_URL}/city`;
-const add_newcity_url = `${config.CITY_API_URL}/city`;
+const get_citylist_url = `${config.BASE_API_URL}/city`;
+const add_newcity_url = `${config.BASE_API_URL}/city`;
 
-const weather_url = config.WEATHER_API_URL;
-const appid = config.WEATHER_API_KEY;
+const weather_url = `${config.BASE_API_URL}/weather`;
 const error_message = config.WEATHER_API_ERRRMSG;
 
 const fetchCityList = () => {
@@ -47,16 +46,11 @@ const setActiveCityFetchWeather = (cityname) => {
     dispatch({ type: 'SET_ACTIVE_CITY', data : { active_cityname: cityname } })
     dispatch({ type: "GET_CITY_WEATHER_STARTED" });
     return axios
-      .get(weather_url, {
-        params: {
-          q: cityname,
-          appid: appid,
-          units: "metric",
-        },
+      .get(`${weather_url}/${cityname}`)
+      .then(res=> res.data.resData)
+      .then((res) =>{
+        dispatch({ type: "GET_CITY_WEATHER_SUCC", data: res })
       })
-      .then((res) =>
-        dispatch({ type: "GET_CITY_WEATHER_SUCC", data: res.data })
-      )
       .catch((err) =>
         dispatch({ type: "GET_CITY_WEATHER_FAIL", msg: error_message })
       );
