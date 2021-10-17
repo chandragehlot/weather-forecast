@@ -16,7 +16,7 @@ Application has two parts
 
 # Tech
 **FrontEnd** : ReactJS, ReduxJS, Redux Thunk (redux middleware), AXIOS, SCSS, Create-react-app CLI
-**BackEnd** : NodeJS, ExpressJS, MongoDB, Mongoose, OPEN 
+**BackEnd** : NodeJS, ExpressJS, MongoDB, Mongoose
 
 # Installation
 **Pre-requisite :** 
