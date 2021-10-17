@@ -5,6 +5,6 @@ import { combineReducers } from "redux";
 
 
 export const rootReducer = combineReducers({
-    cityList : cityListReducer,
+    cityDetails : cityListReducer,
     cityWeather : cityWeatherReducer
 });

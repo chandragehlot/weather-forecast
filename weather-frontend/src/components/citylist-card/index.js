@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchCityList, addNewCity, setActiveCityName } from "../../action/citylist.action";
+import { fetchCityList, addNewCity, setActiveCityFetchWeather } from "../../action/citylist.action";
 
 
-class CityListCard extends Component {
+class CityListCard extends Component { 
   constructor(props) {
     super(props);
     this.state = {
@@ -34,8 +34,8 @@ class CityListCard extends Component {
   handleAddCity() {
     const cityname = this.state.cityname;
     this.props.addCity({ cityname : cityname }).then(()=>{
-      if(this.props.citylist.length == 1){
-        this.props.setActiveCityName(cityname)
+      if(this.props.citylist.length === 1){
+        this.props.setActiveCityFetchWeather(cityname)
       }
       this.resetInputField();
     })
@@ -51,9 +51,8 @@ class CityListCard extends Component {
     this.setState({
       activeCityIndex : index
     },()=>{
-      this.props.setActiveCityName(cityname)
+      this.props.setActiveCityFetchWeather(cityname)
     })
-
   }
 
   render() {
@@ -77,7 +76,7 @@ class CityListCard extends Component {
           {this.props.citylist &&
             this.props.citylist.map((cityObj, index) => {
               return (
-                <div 
+                <div
                 key={index + 11} 
                 className={`city__listitem ${this.state.activeCityIndex === index ? 'item_active' : ''}`}
                 onClick={()=> this.handleCitySelect(index,cityObj.cityname)}
@@ -92,9 +91,9 @@ class CityListCard extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ cityDetails }) {
   return {
-    citylist: state.cityList.citylist,
+    citylist: cityDetails.citylist,
   };
 }
 
@@ -102,7 +101,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchCityList: () => dispatch(fetchCityList()),
     addCity: (cityObj) => dispatch(addNewCity(cityObj)),
-    setActiveCityName : (cityname) => dispatch(setActiveCityName(cityname)),
+    setActiveCityFetchWeather : (cityname) => dispatch(setActiveCityFetchWeather(cityname)),
   };
 }
 
