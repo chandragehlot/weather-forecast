@@ -10,10 +10,6 @@ const unit = process.env.WEATHER_OPENAPI_UNIT ;
 
 function getCityWeatherData(req,res) {
   const { cityname } = req.params;
-  console.log('cityname asdfsadf' , cityname);
-  console.log('paramas1', weather_url)
-  console.log('paramas2', sec_key)
-  console.log('paramas4', unit)
 
   axios.get(weather_url, {
         params: {
@@ -23,7 +19,7 @@ function getCityWeatherData(req,res) {
         }
       })
       .then(response=>{
-        SuccessResponse(res, { response : response.data });
+        SuccessResponse(res, { ...response.data });
       })
       .catch((error)=>{
         console.log("Error with weather open API", error);
